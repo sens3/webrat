@@ -346,9 +346,7 @@ module Webrat
     end
 
     def to_param
-      if @value.nil?
-        super
-      else
+      unless @value.nil?
         replace_param_value(super, @value, test_uploaded_file)
       end
     end

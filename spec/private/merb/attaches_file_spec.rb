@@ -16,7 +16,7 @@ describe "attach_file with merb" do
     lambda { attach_file("Doc", "/some/path") }.should raise_error(Webrat::NotFoundError)
   end
 
-  it "should submit empty strings for blank file fields" do
+  it "should submit nothing for blank file fields" do
     with_html <<-HTML
       <html>
       <form method="post" action="/widgets">
@@ -25,7 +25,7 @@ describe "attach_file with merb" do
       </form>
       </html>
     HTML
-    webrat_session.should_receive(:post).with("/widgets", { "widget" => { "file" => "" } })
+    webrat_session.should_receive(:post).with("/widgets", { })
     click_button
   end
 
